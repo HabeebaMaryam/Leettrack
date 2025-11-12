@@ -66,6 +66,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import adminRoutes from "./routes/adminRoutes.js";
+//import { adminRoutes } from "./routes/adminRoutes.js";
 import studentRoutes from "./routes/studentRoutes.js";
 import rankRoutes from "./routes/rankRoutes.js";
 import adminHelpers from "./routes/adminHelpers.js";
