@@ -1,0 +1,200 @@
+Build a complete full-stack MERN application named **LeetTrack**.
+
+=====================================
+📌 PROJECT OVERVIEW
+=====================================
+LeetTrack is a platform where:
+1. STUDENTS (Users) can view their LeetCode stats.
+2. ADMIN can manage students, view progress, rank them, create batches, and monitor performance.
+
+Build the entire system with clean folder structure, MVC pattern, reusable components, and secure endpoints.
+
+=====================================
+📌 TECH STACK REQUIREMENTS
+=====================================
+Frontend:
+- React + Vite
+- Context API or Redux for state
+- TailwindCSS UI with modern dashboard
+- Axios for API calls
+- Protected routes (JWT token check)
+
+Backend:
+- Node.js + Express.js
+- MongoDB + Mongoose
+- JWT authentication
+- bcrypt password hashing
+- Middleware for auth + admin check
+
+=====================================
+📌 USER FEATURES (STUDENT PANEL)
+=====================================
+A registered user (student) can:
+- Register / Login using JWT
+- View their LeetCode statistics such as:
+  • total solved  
+  • easy/medium/hard  
+  • acceptance rate  
+  • ranking  
+  • contest rating  
+- Data must be fetched using the LeetCode GraphQL API.
+- User dashboard shows:
+  • Today’s solved  
+  • Weekly progress graph  
+  • Total solved  
+  • Pie chart of easy/medium/hard  
+  • Recent submissions (optional)
+
+=====================================
+📌 ADMIN FEATURES (ADMIN PANEL)
+=====================================
+Admin must have a separate dashboard with routes protected by admin middleware.
+
+Admin can:
+
+### 1️⃣ View All Students
+- Table showing:
+  • Name  
+  • Email  
+  • Department  
+  • Total problems solved  
+  • Weekly progress  
+  • View Profile button  
+
+### 2️⃣ View Individual Student Progress
+- Full detailed analytics:
+  • Problem breakdown  
+  • Contest rating  
+  • Difficulty stats  
+  • Weekly graph  
+  • Monthly graph  
+  • Comparison with batch average  
+
+### 3️⃣ Ranking System
+Implement ranking for registered students:
+- Ranking based on total solved
+- Tiebreaker: contest rating or recent activity
+- Display:
+  • Rank  
+  • Student name  
+  • Score (total solved)  
+  • Department  
+  • Batch  
+
+### 4️⃣ Create Batches
+Admin can create batches based on:
+- Department
+- Rank ranges
+- Example:
+  • "CSE Batch 1" → Rank 1–20  
+  • "CSE Batch 2" → Rank 21–50  
+  • "ECE 2025 Batch"  
+
+Batch features:
+- Add/Remove students
+- View batch performance dashboard
+- Graphs: batch average, top performers
+
+=====================================
+📌 DATABASE MODELS NEEDED
+=====================================
+User Model:
+- username
+- email
+- password (hashed)
+- department
+- leetcodeUsername
+- joinedAt
+- role = "student" or "admin"
+
+Stats Model (separate or embedded):
+- totalSolved
+- easySolved
+- mediumSolved
+- hardSolved
+- recentSubmissions[]
+- contestRating
+- lastUpdated: Date
+
+Batch Model:
+- batchName
+- department
+- rankStart
+- rankEnd
+- students[] (refs)
+- createdAt
+
+=====================================
+📌 BACKEND API ENDPOINTS
+=====================================
+
+Auth:
+- POST /api/auth/register
+- POST /api/auth/login
+
+User:
+- GET /api/user/me
+- PUT /api/user/update-leetcode-username
+
+Stats:
+- GET /api/stats/:leetcodeUsername → fetch from LeetCode API
+- POST /api/stats/update → save in DB
+- GET /api/stats/user/:id
+- GET /api/stats/all → admin only
+
+Ranking:
+- GET /api/rankings → return sorted list by totalSolved
+
+Admin:
+- GET /api/admin/students
+- GET /api/admin/student/:id
+- POST /api/admin/batch/create
+- GET /api/admin/batch/list
+- PUT /api/admin/batch/add-student
+- PUT /api/admin/batch/remove-student
+
+=====================================
+📌 FRONTEND PAGES REQUIRED
+=====================================
+
+Student Pages:
+- Login
+- Register
+- Dashboard (with all stats + graphs)
+- Profile
+- Settings (update LeetCode username)
+- Weekly/Monthly analytics
+
+Admin Pages:
+- Admin Login
+- Admin Dashboard
+- Students List
+- View Student Performance
+- Rankings Page
+- Create Batch Page
+- Batches List
+- Batch Details (students + performance graph)
+
+=====================================
+📌 OTHER REQUIREMENTS
+=====================================
+- Use JWT in HttpOnly cookies for security
+- Use dotenv for secrets
+- Use CORS properly
+- Implement refresh token system (optional)
+- Auto-fetch LeetCode stats every 24 hours via cron job
+- Professional UI with cards, charts, tables
+
+=====================================
+📌 OUTPUT REQUIRED
+=====================================
+Generate:
+- full folder structure
+- backend code (all routes, controllers, models, middleware)
+- frontend code (all pages, components, context, hooks)
+- API integration
+- complete working project with instructions to run
+
+=====================================
+END OF SPECIFICATION  
+Build the entire project now.  

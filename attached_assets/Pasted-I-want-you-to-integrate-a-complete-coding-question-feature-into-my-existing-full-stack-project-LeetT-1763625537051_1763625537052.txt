@@ -1,0 +1,114 @@
+I want you to integrate a complete coding-question feature into my existing full-stack project LeetTrack, with the following requirements.
+Build it directly inside the existing folder structure without breaking any existing features.
+
+🔥 Feature Goal
+
+Implement a coding practice module where:
+
+Admin adds coding questions
+
+Students solve these questions inside a built-in coding environment
+
+Solutions are executed using Judge0 API
+
+A new ranking metric is created based on how many platform-questions a student has solved
+
+This feature must seamlessly blend into the current LeetTrack UI, APIs, DB, and ranking logic.
+
+🛠 Admin Features (Build This)
+
+Create a new section in the Admin Panel:
+
+"Manage Coding Questions"
+
+Admin can:
+
+Add new coding questions
+
+Title
+
+Description
+
+Sample Input
+
+Sample Output
+
+Hidden Testcases
+
+Difficulty
+
+Edit existing questions
+
+Delete questions
+
+Backend:
+
+Create routes like:
+
+POST /api/admin/questions
+
+GET /api/admin/questions
+
+PUT /api/admin/questions/:id
+
+DELETE /api/admin/questions/:id
+
+Store all questions in the database.
+
+🎓 Student Features (Build This)
+
+Add a new page in student panel:
+
+“Practice Questions”
+
+Students should be able to:
+
+View list of coding questions
+
+Filter by difficulty
+
+Select a question to solve
+
+Get a code editor page containing:
+
+Monaco editor
+
+Language dropdown (Python, C++, Java)
+
+Custom input box
+
+RUN button
+
+SUBMIT button
+
+Output panel (output, runtime, memory, verdict)
+
+When the student clicks Submit:
+
+Run solution using Judge0 API with hidden test cases
+
+If all testcases pass → mark question as SOLVED
+
+Save each student’s solved questions in DB.
+
+Add API routes:
+
+POST /api/solveQuestion
+
+GET /api/student/solvedQuestions
+
+🚀 Ranking Enhancement (Build This)
+
+Add a new ranking metric:
+
+“Platform Questions Solved”
+
+Update ranking logic so that rankings also include:
+
+LeetCode total solved
+
+Platform solved count
+
+Create a combined ranking formula (you decide the best method)
+
+Update Admin & Student ranking pages to display this new metric
